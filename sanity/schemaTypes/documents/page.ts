@@ -39,13 +39,6 @@ export default defineType({
       },
     }),
     defineField({
-      name: "heading",
-      title: "Heading",
-      type: "string",
-      validation: (Rule) => Rule.required(),
-      hidden: true,
-    }),
-    defineField({
       name: "subheading",
       title: "Subheading",
       type: "string",
