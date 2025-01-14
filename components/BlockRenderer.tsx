@@ -1,10 +1,10 @@
 import React from "react";
 
-import Cta from "@/app/components/blocks/Cta";
-import Info from "@/app/components/blocks/InfoSection";
-import Hero from "@/app/components/blocks/Hero";
-import Tabs from "@/app/components/blocks/Tabs";
-import Gallery from "@/app/components/blocks/Gallery";
+import Cta from "@/components/blocks/Cta";
+import Info from "@/components/blocks/InfoSection";
+import Hero from "@/components/blocks/Hero";
+import Tabs from "@/components/blocks/Tabs";
+import Gallery from "@/components/blocks/Gallery";
 import Paragraph from "./blocks/ParagraphSection";
 import TextAndImage from "./blocks/TextAndImage";
 import Form from "./blocks/Form";
