@@ -12,13 +12,21 @@
     "typegen": "sanity schema extract && sanity typegen generate"
   },
   "dependencies": {
+    "@radix-ui/react-slot": "^1.1.1",
+    "@radix-ui/react-tabs": "^1.1.2",
     "@sanity/assist": "^3.0.6",
     "@sanity/client": "^6.24.3",
+    "@sanity/color-input": "^4.0.3",
     "@sanity/icons": "^3.3.1",
     "@sanity/image-url": "^1.1.0",
     "@sanity/vision": "^3.70.0",
     "@vercel/speed-insights": "^1.1.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "date-fns": "^3.6.0",
+    "embla-carousel-autoplay": "^8.5.2",
+    "embla-carousel-fade": "^8.5.2",
+    "embla-carousel-react": "^8.5.2",
     "lodash": "^4.17.21",
     "lucide-react": "^0.456.0",
     "next": "15.1.4",
@@ -31,10 +39,13 @@
     "sanity-plugin-asset-source-unsplash": "^3.0.2",
     "sanity-plugin-media": "^2.3.2",
     "sonner": "^1.7.1",
-    "styled-components": "^6.1.14"
+    "styled-components": "^6.1.14",
+    "tailwind-merge": "^2.6.0",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@types/lodash": "^4.17.14",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

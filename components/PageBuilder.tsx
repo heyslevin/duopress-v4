@@ -1,12 +1,12 @@
 import Link from "next/link";
 
 import BlockRenderer from "@/components/BlockRenderer";
-// import { Page } from "@/sanity.types";
+import { Page } from "@/sanity.types";
 import { studioUrl } from "@/sanity/lib/api";
 import Onboarding from "./Onboarding";
 
 type PageBuilderPageProps = {
-  page: any;
+  page: Page;
 };
 
 export default function PageBuilder({ page }: PageBuilderPageProps) {

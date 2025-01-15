@@ -37,7 +37,7 @@ const heroLinkFields = /* groq */ `
     }
 `;
 
-//To-do: have one for home and not home
+//To-do: Will have to fix queries when going from test block, to separating all the blocks into own types. Type == "tabs". Switch "tabs"  to _type == tabs.
 const PAGE_BUILDER_CONTENT_QUERY = /* groq */ `
     "pageBuilder": pageBuilder[]{
       ...,
@@ -66,14 +66,89 @@ const PAGE_BUILDER_CONTENT_QUERY = /* groq */ `
           ...,
           "image": {
             ...,
+            "fullAsset": asset->,
             "imageUrl": asset->.url,
             "blurDataUrl": asset->.metadata.lqip,
           }
         }
+      },
+      gallery[] {
+          ...,
+          "image": {
+            ...,
+            "fullAsset": asset->,
+          }
+        },
+
+      tabs[] {
+        ...,
+        image {
+          ...,
+          "fullAsset": asset->
+        }
+      },
+      iniciatives[] {
+        ...,
+        image {
+          ...,
+          "fullAsset": asset->
+        }
+      },
+      portafolio {
+        ...,
+        gallery[] {
+          ...,
+            image {
+            ...,
+            "fullAsset": asset->
+          }
+        }
+      },
+      tools[] {
+        ...,
+          apps[] {
+                ...,
+                icon {
+                  ...,
+                  "fullAsset": asset->      
+            
+                }
+          }
+        
+      },
+      testimonials[] {
+        ...,
+        logo {
+          ...,
+          "fullAsset": asset->
+        }
+      },
+            footer {
+        ...,
+        logo {
+          ...,
+          "fullAsset": asset->
+        }
+      },
+      _type == "paragraph" => {
+      ...,
+      children[]{
+        ...,
+        _type == 'image' => {
+          ...,
+          asset->
+        }
       }
     },
-    _type == "paragraph" => {
+    _type == "tabs" => {
       ...,
+      children[]{
+        ...,
+        _type == 'image' => {
+          ...,
+          asset->
+        }
+      }
     },
     _type == "textAndImage" => {
       ...,
@@ -92,6 +167,11 @@ const PAGE_BUILDER_CONTENT_QUERY = /* groq */ `
     _type == "accordion" => {
       ...,
     }
+
+    }
+    
+    
+    
 `;
 
 export const GET_NAV_LINKS = defineQuery(`

@@ -1,9 +1,10 @@
 import { TITLE_DESCRIPTION, TITLE_TEXT } from "@/sanity/lib/constants";
 import { formatString } from "@/sanity/lib/helpers";
-import _ from "lodash";
+
 import { TextCursor, TextCursorInput } from "lucide-react";
 import React from "react";
 import { defineField, defineType } from "sanity";
+import _ from "lodash";
 
 export default defineType({
   name: "form",

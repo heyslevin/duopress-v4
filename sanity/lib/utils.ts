@@ -1,11 +1,29 @@
 import createImageUrlBuilder from "@sanity/image-url";
 import { dataset, projectId } from "@/sanity/lib/api";
-import { Link } from "@/sanity.types";
 
 const imageBuilder = createImageUrlBuilder({
   projectId: projectId || "",
   dataset: dataset || "",
 });
+
+type Project = {
+  id: number; // Unique identifier for the project
+  name: string; // Name of the project
+  // Add more fields as necessary
+};
+
+export function splitGalleryData(projects: Project[], numGalleries: 2 | 4) {
+  const chunks: Project[][] = Array.from({ length: numGalleries }, () => []);
+
+  projects.forEach((project, index) => {
+    const galleryIndex = index % numGalleries;
+    chunks[galleryIndex].push(project);
+  });
+
+  return chunks;
+}
+export const animateIn =
+  "intersect-full intersect:motion-blur-in-md intersect:motion-translate-y-in-25 intersect:motion-opacity-in-0 fill-both";
 
 export const urlForImage = (source: any) => {
   // Ensure that source image contains a valid reference
@@ -24,7 +42,7 @@ export function resolveOpenGraphImage(image: any, width = 1200, height = 627) {
 }
 
 // Depending on the type of link, we need to fetch the corresponding page, post, or URL.  Otherwise return null.
-export function linkResolver(link: Link | undefined) {
+export function linkResolver(link: any | undefined) {
   if (!link) return null;
 
   // If linkType is not set but href is, lets set linkType to "href".  This comes into play when pasting links into the portable text editor because a link type is not assumed.

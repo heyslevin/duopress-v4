@@ -18,7 +18,6 @@ export default defineType({
       type: "string",
       fieldset: "settings",
       description: TITLE_DESCRIPTION,
-      validation: (Rule) => Rule.required(),
       hidden: true,
     }),
     defineField({

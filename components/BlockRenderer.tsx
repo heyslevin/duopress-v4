@@ -5,11 +5,12 @@ import Info from "@/components/blocks/InfoSection";
 import Hero from "@/components/blocks/Hero";
 import Tabs from "@/components/blocks/Tabs";
 import Gallery from "@/components/blocks/Gallery";
-import Paragraph from "./blocks/ParagraphSection";
-import TextAndImage from "./blocks/TextAndImage";
-import Form from "./blocks/Form";
-import Metrics from "./blocks/Metrics";
-import Accordion from "./blocks/Accordion";
+import Paragraph from "@/components/blocks/ParagraphSection";
+import TextAndImage from "@/components/blocks/TextAndImage";
+import Form from "@/components/blocks/Form";
+import Metrics from "@/components/blocks/Metrics";
+import Accordion from "@/components/blocks/Accordion";
+import TestBlock from "@/components/blocks/TestBlock";
 
 type BlocksType = {
   [key: string]: React.FC<any>;
@@ -37,6 +38,7 @@ const Blocks: BlocksType = {
   form: Form,
   metrics: Metrics,
   accordion: Accordion,
+  testBlock: TestBlock,
 };
 
 export default function BlockRenderer({ block, index }: BlockProps) {

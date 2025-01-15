@@ -1,7 +1,10 @@
+import { urlForImage } from "@/sanity/lib/utils";
+import { Image } from "next-sanity/image";
+
 export const PortableParagraph = {
   block: {
     h1: ({ children }) => (
-      <h1 className="my-4 text-4xl leading-none tracking-tight md:text-6xl">
+      <h1 className="my-4 text-3xl font-medium leading-[2.4rem] tracking-tight md:text-6xl">
         {children}
       </h1>
     ),
@@ -54,6 +57,23 @@ export const PortableParagraph = {
         >
           {children}
         </a>
+      );
+    },
+  },
+  types: {
+    image: ({ value }) => {
+      if (!value?.asset?._ref) {
+        return null;
+      }
+      return (
+        <div className="relative top-2 -mt-4 ml-1 mr-1 inline-block h-10 w-10 md:h-14 md:w-14">
+          <Image
+            src={urlForImage(value)?.url() || ""}
+            alt={value.alt || ""}
+            className="object-contain"
+            fill
+          />
+        </div>
       );
     },
   },

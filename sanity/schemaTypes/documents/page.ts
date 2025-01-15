@@ -13,6 +13,7 @@ export const SCHEMA_ARRAY_OF_BLOCKS = [
   { type: "form" },
   { type: "metrics" },
   { type: "accordion" },
+  { type: "testBlock" },
 ];
 
 export default defineType({

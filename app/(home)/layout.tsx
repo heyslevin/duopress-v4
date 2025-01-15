@@ -1,11 +1,14 @@
 import "../globals.css";
+import React from "react";
 
 import { SpeedInsights } from "@vercel/speed-insights/next";
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { draftMode } from "next/headers";
 import { VisualEditing, toPlainText } from "next-sanity";
 import { Toaster } from "sonner";
+// import { Analytics } from "@vercel/analytics/react";
 
 import DraftModeToast from "@/components/DraftModeToast";
 import Footer from "@/components/Footer";
@@ -15,6 +18,8 @@ import * as demo from "@/sanity/lib/demo";
 import { sanityFetch, SanityLive } from "@/sanity/lib/live";
 import { GET_NAV_LINKS, settingsQuery } from "@/sanity/lib/queries";
 import { resolveOpenGraphImage } from "@/sanity/lib/utils";
+import localFont from "next/font/local";
+import ObserverProvider from "@/components/ObserverProvider";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { data: settings } = await sanityFetch({
@@ -62,10 +67,11 @@ export default async function RootLayout({
 
   const navLinks = sanityFetch({ query: GET_NAV_LINKS });
 
+  console.log({ draftMode: isDraftMode });
   return (
-    <html lang="en" className={`${inter.variable} bg-white text-black`}>
+    <html lang="en" className={` bg-white text-black`}>
       <body>
-        <section className="min-h-screen pt-24">
+        <section className="">
           <Toaster />
           {isDraftMode && (
             <>
@@ -73,12 +79,11 @@ export default async function RootLayout({
               <VisualEditing />
             </>
           )}
+
           <LiveErrorBoundary>
             <SanityLive />
           </LiveErrorBoundary>
-          {/* <Header /> */}
-          <main className="">{children}</main>
-          <Footer />
+          {children}
         </section>
         <SpeedInsights />
       </body>

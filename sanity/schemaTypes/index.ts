@@ -1,23 +1,25 @@
 // import page from "./page";
-import person from './documents/person'
-import page from './documents/page'
-import post from './documents/post'
-import callToAction from './objects/callToAction'
-import infoSection from './objects/infoSection'
-import settings from './singletons/settings'
-import link from './objects/link'
-import blockContent from './objects/blockContent'
-import heroType from './blocks/heroType'
-import tabsType from './blocks/tabsType'
-import galleryType from './blocks/galleryType'
-import paragraphType from './blocks/paragraphType'
-import textAndImageType from './blocks/textAndImageType'
-import styleSettings from './singletons/styleSettings'
-import header from './singletons/header'
-import navLink from './objects/navLink'
-import formType from './blocks/formType'
-import metricsType from './blocks/metricsType'
-import accordionType from './blocks/accordionType'
+import person from "./documents/person";
+import page from "./documents/page";
+import post from "./documents/post";
+import callToAction from "./objects/callToAction";
+import infoSection from "./objects/infoSection";
+import settings from "./singletons/settings";
+import link from "./objects/link";
+import blockContent from "./objects/blockContent";
+import heroType from "./blocks/heroType";
+import tabsType from "./blocks/tabsType";
+import galleryType from "./blocks/galleryType";
+import paragraphType from "./blocks/paragraphType";
+import textAndImageType from "./blocks/textAndImageType";
+import styleSettings from "./singletons/styleSettings";
+import header from "./singletons/header";
+import navLink from "./objects/navLink";
+import formType from "./blocks/formType";
+import metricsType from "./blocks/metricsType";
+import accordionType from "./blocks/accordionType";
+import testBlockType from "./blocks/testBlockType";
+import projects from "./objects/projects";
 
 export const schemaTypes = [
   // Singletons
@@ -34,6 +36,7 @@ export const schemaTypes = [
   callToAction,
   link,
   navLink,
+  projects,
   // Blocks
   formType,
   galleryType,
@@ -43,4 +46,5 @@ export const schemaTypes = [
   textAndImageType,
   metricsType,
   accordionType,
-]
+  testBlockType,
+];

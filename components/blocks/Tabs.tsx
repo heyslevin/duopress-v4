@@ -1,8 +1,8 @@
-// import {
-//   SanityImageAsset,
-//   SanityImageCrop,
-//   SanityImageHotspot,
-// } from "@/sanity.types";
+import {
+  SanityImageAsset,
+  SanityImageCrop,
+  SanityImageHotspot,
+} from "@/sanity.types";
 import { urlForImage } from "@/sanity/lib/utils";
 import { Image } from "next-sanity/image";
 
@@ -20,8 +20,8 @@ export type Tabs = {
         _type: "reference";
         _weak?: boolean;
       };
-      hotspot?: any;
-      crop?: any;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
       alt?: string;
       _type: "image";
       imageUrl: string | null;

@@ -7,6 +7,9 @@
 import { visionTool } from "@sanity/vision";
 import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
+import { colorInput } from "@sanity/color-input";
+import { media } from "sanity-plugin-media";
+import { unsplashImageAsset } from "sanity-plugin-asset-source-unsplash";
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
 import { apiVersion, dataset, projectId } from "./sanity/env";
@@ -60,6 +63,14 @@ export default defineConfig({
     templates: (templates) =>
       templates.filter(({ schemaType }) => !singletonTypes.has(schemaType)),
   },
+  document: {
+    // For singleton types, filter out actions that are not explicitly included
+    // in the `singletonActions` list defined above
+    actions: (input, context) =>
+      singletonTypes.has(context.schemaType)
+        ? input.filter(({ action }) => action && singletonActions.has(action))
+        : input,
+  },
   plugins: [
     presentationTool({
       previewUrl: {
@@ -86,22 +97,20 @@ export default defineConfig({
             tone: "positive",
           }),
 
-          //Uncomment this to add document location to pages
-
-          // page: defineLocations({
-          //   select: {
-          //     name: 'name',
-          //     slug: 'slug.current',
-          //   },
-          //   resolve: (doc) => ({
-          //     locations: [
-          //       {
-          //         title: doc?.name || 'Untitled',
-          //         href: resolveHref('page', doc?.slug)!,
-          //       },
-          //     ],
-          //   }),
-          // }),
+          page: defineLocations({
+            select: {
+              name: "name",
+              slug: "slug.current",
+            },
+            resolve: (doc) => ({
+              locations: [
+                {
+                  title: doc?.name || "Untitled",
+                  href: resolveHref("page", doc?.slug)!,
+                },
+              ],
+            }),
+          }),
           post: defineLocations({
             select: {
               title: "title",
@@ -127,6 +136,9 @@ export default defineConfig({
     // Vision is for querying with GROQ from inside the Studio
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({ defaultApiVersion: apiVersion }),
+    colorInput(),
+    media(),
+    unsplashImageAsset(),
   ],
 });
 

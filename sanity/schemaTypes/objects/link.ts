@@ -1,5 +1,3 @@
-"use client";
-
 import { defineField, defineType } from "sanity";
 import { LinkIcon } from "@sanity/icons";
 import AsyncSelect from "@/sanity/components/AsyncSelect";

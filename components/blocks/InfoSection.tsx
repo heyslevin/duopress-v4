@@ -1,10 +1,10 @@
 import { type PortableTextBlock } from "next-sanity";
 
 import PortableText from "@/components/PortableText";
-// import { InfoSection as InfoSectionType } from "@/sanity.types";
+import { InfoSection as InfoSectionType } from "@/sanity.types";
 
 type InfoProps = {
-  block: any;
+  block: InfoSectionType;
   index: number;
 };
 

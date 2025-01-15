@@ -12,14 +12,14 @@ import {
 } from "@/sanity/lib/queries";
 // import { Page as PageType } from "@/sanity.types";
 
-export async function generateStaticParams() {
-  const { data } = await sanityFetch({
-    query: HOME_PAGES_SLUGS,
-    perspective: "published",
-    stega: false,
-  });
-  return data;
-}
+// export async function generateStaticParams() {
+//   const { data } = await sanityFetch({
+//     query: HOME_PAGES_SLUGS,
+//     perspective: "published",
+//     stega: false,
+//   });
+//   return data;
+// }
 
 type Props = {
   params: Promise<{ slug: string }>;
