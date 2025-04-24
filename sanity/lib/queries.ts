@@ -174,6 +174,21 @@ const PAGE_BUILDER_CONTENT_QUERY = /* groq */ `
     
 `;
 
+export const HEADER_NAVIGATION_QUERY = groq`
+*[_type == "header"] {
+  navigation[] {
+    ...,
+    text,
+    _key,
+    'slug': link.page->slug.current,
+    'pagePortionKey':link.linkToSection,
+    'typeOfLink': link.linkType,
+  },
+     "websiteTitle": *[_type == "settings"][0].title,
+
+}[0]
+`;
+
 export const GET_NAV_LINKS = defineQuery(`
   *[_type == "header"][0] {
   ...,
@@ -249,6 +264,10 @@ export const HOME_PAGES_SLUGS = defineQuery(`
   *[_type == "page" && isHome.status==true && defined(slug.current)]
   {"slug": slug.current}
 `);
+
+export const HOMEPAGE_QUERY = groq`
+  *[isHomepage == true]{'slug':slug.current, _id}[0]
+`;
 
 // const PAGE_BUILDER_CONTENT_QUERY = defineQuery(`
 //   content[] {
