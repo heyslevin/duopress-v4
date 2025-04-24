@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## What's this?
 
-## Getting Started
+I'm building a Page Builder using Next.js + Sanity
 
-First, run the development server:
+## Who is this for?
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+This is a personal project, I'm learning how to build a good looking page builder for all kinds of small companies.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## When was this started?
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This is version 4, starting on January 4, 2025.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Who is making this?
 
-## Learn More
+I'm a designer that is learning to code on weekends and weeknights.
 
-To learn more about Next.js, take a look at the following resources:
+## What technologies are used?
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+I'm using:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- React
+- Next.js
+- Sanity
+- Tailwind
 
-## Deploy on Vercel
+## Building a block (Basics)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Back
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Define Schema
+  /blocks/nameType.ts
+
+- Add to Schema index
+  /schemaTypes/index
+
+- Generate types // check where in the steps this goes
+  Sanity schema extract
+  Sanity typegen generate
+
+- Add to SCHEMA_ARRAY_OF_BLOCKS in constants
+
+- Add a GROQ block query in PAGE_BUILDER_CONTENT_QUERY
+
+### Front
+
+- Create Component
+  Name.tsx
+
+- Type NameProps = {
+  block: Name (get’s imported),
+  index: number}
+
+- Export function NameBlock({ block: NameProps})
+
+- Add to BlockRenderer
+
+## Building a Block (details)
+
+### Back
+
+- Add all schema types
+  - Add Preview Icon to schema
+- Update Groq
+  - Check Vision so data shape is complete (images & references)
+- Extract and generate types
+
+### Front
+
+- Update Type with Groq result generated Type
+- Style it up baby
+- Take a screenshot and use it in static/page-builder-thumbnails
