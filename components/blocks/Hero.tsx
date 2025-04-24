@@ -33,7 +33,7 @@ type HeroProps = {
 
 export default function Hero({ block }: HeroProps) {
   return (
-    <main className="container flex flex-col text-center justify-center gap-3">
+    <main className="flex flex-col text-center items-center justify-center gap-3">
       <h2 className="text-base">{block.caption}</h2>
       <h1 className="text-5xl justify-center">{block.heading}</h1>
 

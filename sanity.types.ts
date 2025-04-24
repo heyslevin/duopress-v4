@@ -68,6 +68,201 @@ export type Geopoint = {
   alt?: number;
 };
 
+export type TestBlock = {
+  _type: "testBlock";
+  title?: string;
+  logo?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  gallery?: Array<{
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+    _key: string;
+  }>;
+  blockContent?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    } | {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      _type: "image";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+  tabs?: Array<{
+    industry?: string;
+    percentage?: string;
+    image?: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+    };
+    _type: "tab";
+    _key: string;
+  }>;
+  metrics?: Array<{
+    bigNumber?: string;
+    title?: string;
+    description?: string;
+    _type: "metric";
+    _key: string;
+  }>;
+  iniciatives?: Array<{
+    title?: string;
+    description?: string;
+    color?: "blue" | "red" | "green" | "black";
+    gallery?: Array<{
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+      _key: string;
+    }>;
+    image?: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+    };
+    _type: "item";
+    _key: string;
+  }>;
+  tools?: Array<{
+    title?: string;
+    description?: string;
+    apps?: Array<{
+      name?: string;
+      category?: string;
+      icon?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      _type: "app";
+      _key: string;
+    }>;
+    _type: "toolGroup";
+    _key: string;
+  }>;
+  names?: Array<string>;
+  testimonials?: Array<{
+    person?: string;
+    company?: string;
+    text?: string;
+    logo?: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+    };
+    color?: Color;
+    _type: "testimonial";
+    _key: string;
+  }>;
+  portafolio?: {
+    gallery?: Array<{
+      _key: string;
+    } & Projects>;
+  };
+  footer?: {
+    logo?: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+    };
+    text?: string;
+    contact?: string;
+    contactLinks?: {
+      email?: string;
+      website?: {
+        url?: string;
+        title?: string;
+      };
+      socials?: Array<{
+        company?: string;
+        url?: string;
+        _type: "account";
+        _key: string;
+      }>;
+    };
+  };
+};
+
 export type Accordion = {
   _type: "accordion";
   title?: string;
@@ -212,6 +407,24 @@ export type Form = {
   }>;
 };
 
+export type Projects = {
+  _type: "projects";
+  client?: string;
+  industry?: string;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+};
+
 export type NavLink = {
   _type: "navLink";
   text?: string;
@@ -329,7 +542,9 @@ export type Page = {
     _key: string;
   } & Metrics | {
     _key: string;
-  } & Accordion>;
+  } & Accordion | {
+    _key: string;
+  } & TestBlock>;
 };
 
 export type Link = {
@@ -397,12 +612,6 @@ export type Person = {
     alt?: string;
     _type: "image";
   };
-};
-
-export type Slug = {
-  _type: "slug";
-  current?: string;
-  source?: string;
 };
 
 export type Header = {
@@ -522,7 +731,55 @@ export type SanityImageMetadata = {
   isOpaque?: boolean;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Accordion | Metrics | TextAndImage | Tabs | Paragraph | Hero | Gallery | Form | NavLink | CallToAction | InfoSection | BlockContent | Page | Link | Post | Person | Slug | Header | Style | Settings | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata;
+export type MediaTag = {
+  _id: string;
+  _type: "media.tag";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: Slug;
+};
+
+export type Slug = {
+  _type: "slug";
+  current?: string;
+  source?: string;
+};
+
+export type Color = {
+  _type: "color";
+  hex?: string;
+  alpha?: number;
+  hsl?: HslaColor;
+  hsv?: HsvaColor;
+  rgb?: RgbaColor;
+};
+
+export type RgbaColor = {
+  _type: "rgbaColor";
+  r?: number;
+  g?: number;
+  b?: number;
+  a?: number;
+};
+
+export type HsvaColor = {
+  _type: "hsvaColor";
+  h?: number;
+  s?: number;
+  v?: number;
+  a?: number;
+};
+
+export type HslaColor = {
+  _type: "hslaColor";
+  h?: number;
+  s?: number;
+  l?: number;
+  a?: number;
+};
+
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | TestBlock | Accordion | Metrics | TextAndImage | Tabs | Paragraph | Hero | Gallery | Form | Projects | NavLink | CallToAction | InfoSection | BlockContent | Page | Link | Post | Person | Header | Style | Settings | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | MediaTag | Slug | Color | RgbaColor | HsvaColor | HslaColor;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./sanity/lib/queries.ts
 // Variable: settingsQuery
@@ -566,6 +823,20 @@ export type SettingsQueryResult = {
     _type: "image";
   };
 } | null;
+// Variable: HEADER_NAVIGATION_QUERY
+// Query: *[_type == "header"] {  navigation[] {    ...,    text,    _key,    'slug': link.page->slug.current,    'pagePortionKey':link.linkToSection,    'typeOfLink': link.linkType,  },     "websiteTitle": *[_type == "settings"][0].title,}[0]
+export type HEADER_NAVIGATION_QUERYResult = {
+  navigation: Array<{
+    _key: string;
+    _type: "navLink";
+    text: string | null;
+    link?: Link;
+    slug: string | null;
+    pagePortionKey: string | null;
+    typeOfLink: "href" | "page" | null;
+  }> | null;
+  websiteTitle: string | null;
+} | null;
 // Variable: GET_NAV_LINKS
 // Query: *[_type == "header"][0] {  ...,  navigation[] {    ...,    "link": link {      ...,      "page": page->.slug.current,    }  }}
 export type GET_NAV_LINKSResult = {
@@ -589,7 +860,7 @@ export type GET_NAV_LINKSResult = {
   }> | null;
 } | null;
 // Variable: HOME_GET_PAGEQUERY
-// Query: *[_type == 'page' && isHome.status == true][0]{    _id,    name,    slug,    heading,    subheading,        "pageBuilder": pageBuilder[]{      ...,      _type == "callToAction" => {        ...,            link {      ...,      _type == "link" => {        "page": page->slug.current,        "post": post->slug.current      }    },      },      _type == "hero" => {        ...,            button {      ...,      buttonText,      link {        ...,        _type == "link" => {          "page": page->slug.current,          "post": post->slug.current        }      }    },      },      _type == "tabs" => {        ...,        "tabs": tabs[] {          ...,          "image": image {            ...,            "imageUrl": asset->.url,            "blurDataUrl": asset->.metadata.lqip,          }        }      },      _type == "gallery" => {        ...,        "gallery": gallery[] {          ...,          "image": {            ...,            "imageUrl": asset->.url,            "blurDataUrl": asset->.metadata.lqip,          }        }      }    },    _type == "paragraph" => {      ...,    },    _type == "textAndImage" => {      ...,      "image": {            ...,            "imageUrl": asset->.url,            "blurDataUrl": asset->.metadata.lqip,          }    },    _type == "form" => {      ...,    },    _type == "metrics" => {      ...,    },    _type == "accordion" => {      ...,    },  }
+// Query: *[_type == 'page' && isHome.status == true][0]{    _id,    name,    slug,    heading,    subheading,        "pageBuilder": pageBuilder[]{      ...,      _type == "callToAction" => {        ...,            link {      ...,      _type == "link" => {        "page": page->slug.current,        "post": post->slug.current      }    },      },      _type == "hero" => {        ...,            button {      ...,      buttonText,      link {        ...,        _type == "link" => {          "page": page->slug.current,          "post": post->slug.current        }      }    },      },      _type == "tabs" => {        ...,        "tabs": tabs[] {          ...,          "image": image {            ...,            "imageUrl": asset->.url,            "blurDataUrl": asset->.metadata.lqip,          }        }      },      _type == "gallery" => {        ...,        "gallery": gallery[] {          ...,          "image": {            ...,            "fullAsset": asset->,            "imageUrl": asset->.url,            "blurDataUrl": asset->.metadata.lqip,          }        }      },      gallery[] {          ...,          "image": {            ...,            "fullAsset": asset->,          }        },      tabs[] {        ...,        image {          ...,          "fullAsset": asset->        }      },      iniciatives[] {        ...,        image {          ...,          "fullAsset": asset->        }      },      portafolio {        ...,        gallery[] {          ...,            image {            ...,            "fullAsset": asset->          }        }      },      tools[] {        ...,          apps[] {                ...,                icon {                  ...,                  "fullAsset": asset->                                  }          }              },      testimonials[] {        ...,        logo {          ...,          "fullAsset": asset->        }      },            footer {        ...,        logo {          ...,          "fullAsset": asset->        }      },      _type == "paragraph" => {      ...,      children[]{        ...,        _type == 'image' => {          ...,          asset->        }      }    },    _type == "tabs" => {      ...,      children[]{        ...,        _type == 'image' => {          ...,          asset->        }      }    },    _type == "textAndImage" => {      ...,      "image": {            ...,            "imageUrl": asset->.url,            "blurDataUrl": asset->.metadata.lqip,          }    },    _type == "form" => {      ...,    },    _type == "metrics" => {      ...,    },    _type == "accordion" => {      ...,    }    }            ,  }
 export type HOME_GET_PAGEQUERYResult = {
   _id: string;
   name: string | null;
@@ -609,6 +880,13 @@ export type HOME_GET_PAGEQUERYResult = {
       _type: "item";
       _key: string;
     }>;
+    gallery: null;
+    tabs: null;
+    iniciatives: null;
+    portafolio: null;
+    tools: null;
+    testimonials: null;
+    footer: null;
   } | {
     _key: string;
     _type: "callToAction";
@@ -624,6 +902,13 @@ export type HOME_GET_PAGEQUERYResult = {
       openInNewTab?: boolean;
       post: null;
     } | null;
+    gallery: null;
+    tabs: null;
+    iniciatives: null;
+    portafolio: null;
+    tools: null;
+    testimonials: null;
+    footer: null;
   } | {
     _key: string;
     _type: "form";
@@ -637,6 +922,13 @@ export type HOME_GET_PAGEQUERYResult = {
       _type: "formItems";
       _key: string;
     }>;
+    gallery: null;
+    tabs: null;
+    iniciatives: null;
+    portafolio: null;
+    tools: null;
+    testimonials: null;
+    footer: null;
   } | {
     _key: string;
     _type: "gallery";
@@ -665,10 +957,36 @@ export type HOME_GET_PAGEQUERYResult = {
         alt?: string;
         _type: "galleryImage";
         _key: string;
-        imageUrl: string | null;
-        blurDataUrl: string | null;
+        fullAsset: {
+          _id: string;
+          _type: "sanity.imageAsset";
+          _createdAt: string;
+          _updatedAt: string;
+          _rev: string;
+          originalFilename?: string;
+          label?: string;
+          title?: string;
+          description?: string;
+          altText?: string;
+          sha1hash?: string;
+          extension?: string;
+          mimeType?: string;
+          size?: number;
+          assetId?: string;
+          uploadId?: string;
+          path?: string;
+          url?: string;
+          metadata?: SanityImageMetadata;
+          source?: SanityAssetSourceData;
+        } | null;
       };
     }> | null;
+    tabs: null;
+    iniciatives: null;
+    portafolio: null;
+    tools: null;
+    testimonials: null;
+    footer: null;
   } | {
     _key: string;
     _type: "hero";
@@ -687,6 +1005,13 @@ export type HOME_GET_PAGEQUERYResult = {
         post: null;
       } | null;
     } | null;
+    gallery: null;
+    tabs: null;
+    iniciatives: null;
+    portafolio: null;
+    tools: null;
+    testimonials: null;
+    footer: null;
   } | {
     _key: string;
     _type: "infoSection";
@@ -724,6 +1049,13 @@ export type HOME_GET_PAGEQUERYResult = {
       _type: "block";
       _key: string;
     }>;
+    gallery: null;
+    tabs: null;
+    iniciatives: null;
+    portafolio: null;
+    tools: null;
+    testimonials: null;
+    footer: null;
   } | {
     _key: string;
     _type: "metrics";
@@ -738,6 +1070,13 @@ export type HOME_GET_PAGEQUERYResult = {
       _type: "metricItem";
       _key: string;
     }>;
+    gallery: null;
+    tabs: null;
+    iniciatives: null;
+    portafolio: null;
+    tools: null;
+    testimonials: null;
+    footer: null;
   } | {
     _key: string;
     _type: "paragraph";
@@ -760,16 +1099,24 @@ export type HOME_GET_PAGEQUERYResult = {
       _type: "block";
       _key: string;
     }>;
+    gallery: null;
+    tabs: null;
+    iniciatives: null;
+    portafolio: null;
+    tools: null;
+    testimonials: null;
+    footer: null;
+    children: null;
   } | {
     _key: string;
     _type: "tabs";
     title?: string;
     heading?: string;
     caption?: string;
-    tabs: Array<{
+    tabs?: Array<{
       heading?: string;
       description?: string;
-      image: {
+      image?: {
         asset?: {
           _ref: string;
           _type: "reference";
@@ -780,20 +1127,22 @@ export type HOME_GET_PAGEQUERYResult = {
         crop?: SanityImageCrop;
         alt?: string;
         _type: "image";
-        imageUrl: string | null;
-        blurDataUrl: string | null;
-      } | null;
+      };
       _type: "tab";
       _key: string;
-    }> | null;
+    }>;
+    gallery: null;
+    iniciatives: null;
+    portafolio: null;
+    tools: null;
+    testimonials: null;
+    footer: null;
+    children: null;
   } | {
     _key: string;
-    _type: "textAndImage";
+    _type: "testBlock";
     title?: string;
-    heading?: string;
-    caption?: string;
-    text?: string;
-    image?: {
+    logo?: {
       asset?: {
         _ref: string;
         _type: "reference";
@@ -805,14 +1154,414 @@ export type HOME_GET_PAGEQUERYResult = {
       alt?: string;
       _type: "image";
     };
+    gallery: Array<{
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+      _key: string;
+      image: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+        _key: string;
+        fullAsset: {
+          _id: string;
+          _type: "sanity.imageAsset";
+          _createdAt: string;
+          _updatedAt: string;
+          _rev: string;
+          originalFilename?: string;
+          label?: string;
+          title?: string;
+          description?: string;
+          altText?: string;
+          sha1hash?: string;
+          extension?: string;
+          mimeType?: string;
+          size?: number;
+          assetId?: string;
+          uploadId?: string;
+          path?: string;
+          url?: string;
+          metadata?: SanityImageMetadata;
+          source?: SanityAssetSourceData;
+        } | null;
+      };
+    }> | null;
+    blockContent?: Array<{
+      children?: Array<{
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        _type: "image";
+        _key: string;
+      } | {
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+    }>;
+    tabs: Array<{
+      industry?: string;
+      percentage?: string;
+      image: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+        fullAsset: {
+          _id: string;
+          _type: "sanity.imageAsset";
+          _createdAt: string;
+          _updatedAt: string;
+          _rev: string;
+          originalFilename?: string;
+          label?: string;
+          title?: string;
+          description?: string;
+          altText?: string;
+          sha1hash?: string;
+          extension?: string;
+          mimeType?: string;
+          size?: number;
+          assetId?: string;
+          uploadId?: string;
+          path?: string;
+          url?: string;
+          metadata?: SanityImageMetadata;
+          source?: SanityAssetSourceData;
+        } | null;
+      } | null;
+      _type: "tab";
+      _key: string;
+    }> | null;
+    metrics?: Array<{
+      bigNumber?: string;
+      title?: string;
+      description?: string;
+      _type: "metric";
+      _key: string;
+    }>;
+    iniciatives: Array<{
+      title?: string;
+      description?: string;
+      color?: "black" | "blue" | "green" | "red";
+      gallery?: Array<{
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+        _key: string;
+      }>;
+      image: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+        fullAsset: {
+          _id: string;
+          _type: "sanity.imageAsset";
+          _createdAt: string;
+          _updatedAt: string;
+          _rev: string;
+          originalFilename?: string;
+          label?: string;
+          title?: string;
+          description?: string;
+          altText?: string;
+          sha1hash?: string;
+          extension?: string;
+          mimeType?: string;
+          size?: number;
+          assetId?: string;
+          uploadId?: string;
+          path?: string;
+          url?: string;
+          metadata?: SanityImageMetadata;
+          source?: SanityAssetSourceData;
+        } | null;
+      } | null;
+      _type: "item";
+      _key: string;
+    }> | null;
+    tools: Array<{
+      title?: string;
+      description?: string;
+      apps: Array<{
+        name?: string;
+        category?: string;
+        icon: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+          fullAsset: {
+            _id: string;
+            _type: "sanity.imageAsset";
+            _createdAt: string;
+            _updatedAt: string;
+            _rev: string;
+            originalFilename?: string;
+            label?: string;
+            title?: string;
+            description?: string;
+            altText?: string;
+            sha1hash?: string;
+            extension?: string;
+            mimeType?: string;
+            size?: number;
+            assetId?: string;
+            uploadId?: string;
+            path?: string;
+            url?: string;
+            metadata?: SanityImageMetadata;
+            source?: SanityAssetSourceData;
+          } | null;
+        } | null;
+        _type: "app";
+        _key: string;
+      }> | null;
+      _type: "toolGroup";
+      _key: string;
+    }> | null;
+    names?: Array<string>;
+    testimonials: Array<{
+      person?: string;
+      company?: string;
+      text?: string;
+      logo: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+        fullAsset: {
+          _id: string;
+          _type: "sanity.imageAsset";
+          _createdAt: string;
+          _updatedAt: string;
+          _rev: string;
+          originalFilename?: string;
+          label?: string;
+          title?: string;
+          description?: string;
+          altText?: string;
+          sha1hash?: string;
+          extension?: string;
+          mimeType?: string;
+          size?: number;
+          assetId?: string;
+          uploadId?: string;
+          path?: string;
+          url?: string;
+          metadata?: SanityImageMetadata;
+          source?: SanityAssetSourceData;
+        } | null;
+      } | null;
+      color?: Color;
+      _type: "testimonial";
+      _key: string;
+    }> | null;
+    portafolio: {
+      gallery: Array<{
+        _key: string;
+        _type: "projects";
+        client?: string;
+        industry?: string;
+        image: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+          fullAsset: {
+            _id: string;
+            _type: "sanity.imageAsset";
+            _createdAt: string;
+            _updatedAt: string;
+            _rev: string;
+            originalFilename?: string;
+            label?: string;
+            title?: string;
+            description?: string;
+            altText?: string;
+            sha1hash?: string;
+            extension?: string;
+            mimeType?: string;
+            size?: number;
+            assetId?: string;
+            uploadId?: string;
+            path?: string;
+            url?: string;
+            metadata?: SanityImageMetadata;
+            source?: SanityAssetSourceData;
+          } | null;
+        } | null;
+      }> | null;
+    } | null;
+    footer: {
+      logo: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+        fullAsset: {
+          _id: string;
+          _type: "sanity.imageAsset";
+          _createdAt: string;
+          _updatedAt: string;
+          _rev: string;
+          originalFilename?: string;
+          label?: string;
+          title?: string;
+          description?: string;
+          altText?: string;
+          sha1hash?: string;
+          extension?: string;
+          mimeType?: string;
+          size?: number;
+          assetId?: string;
+          uploadId?: string;
+          path?: string;
+          url?: string;
+          metadata?: SanityImageMetadata;
+          source?: SanityAssetSourceData;
+        } | null;
+      } | null;
+      text?: string;
+      contact?: string;
+      contactLinks?: {
+        email?: string;
+        website?: {
+          url?: string;
+          title?: string;
+        };
+        socials?: Array<{
+          company?: string;
+          url?: string;
+          _type: "account";
+          _key: string;
+        }>;
+      };
+    } | null;
+  } | {
+    _key: string;
+    _type: "textAndImage";
+    title?: string;
+    heading?: string;
+    caption?: string;
+    text?: string;
+    image: {
+      _key: string;
+      _type: "textAndImage";
+      title?: string;
+      heading?: string;
+      caption?: string;
+      text?: string;
+      image?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      button?: {
+        buttonText?: string;
+        link?: Link;
+      };
+      imageUrl: null;
+      blurDataUrl: null;
+    };
     button?: {
       buttonText?: string;
       link?: Link;
     };
+    gallery: null;
+    tabs: null;
+    iniciatives: null;
+    portafolio: null;
+    tools: null;
+    testimonials: null;
+    footer: null;
   }> | null;
 } | null;
 // Variable: getPageQuery
-// Query: *[_type == 'page' && slug.current == $slug][0]{    _id,    name,    slug,    heading,    subheading,        "pageBuilder": pageBuilder[]{      ...,      _type == "callToAction" => {        ...,            link {      ...,      _type == "link" => {        "page": page->slug.current,        "post": post->slug.current      }    },      },      _type == "hero" => {        ...,            button {      ...,      buttonText,      link {        ...,        _type == "link" => {          "page": page->slug.current,          "post": post->slug.current        }      }    },      },      _type == "tabs" => {        ...,        "tabs": tabs[] {          ...,          "image": image {            ...,            "imageUrl": asset->.url,            "blurDataUrl": asset->.metadata.lqip,          }        }      },      _type == "gallery" => {        ...,        "gallery": gallery[] {          ...,          "image": {            ...,            "imageUrl": asset->.url,            "blurDataUrl": asset->.metadata.lqip,          }        }      }    },    _type == "paragraph" => {      ...,    },    _type == "textAndImage" => {      ...,      "image": {            ...,            "imageUrl": asset->.url,            "blurDataUrl": asset->.metadata.lqip,          }    },    _type == "form" => {      ...,    },    _type == "metrics" => {      ...,    },    _type == "accordion" => {      ...,    },  }
+// Query: *[_type == 'page' && slug.current == $slug][0]{    _id,    name,    slug,    heading,    subheading,        "pageBuilder": pageBuilder[]{      ...,      _type == "callToAction" => {        ...,            link {      ...,      _type == "link" => {        "page": page->slug.current,        "post": post->slug.current      }    },      },      _type == "hero" => {        ...,            button {      ...,      buttonText,      link {        ...,        _type == "link" => {          "page": page->slug.current,          "post": post->slug.current        }      }    },      },      _type == "tabs" => {        ...,        "tabs": tabs[] {          ...,          "image": image {            ...,            "imageUrl": asset->.url,            "blurDataUrl": asset->.metadata.lqip,          }        }      },      _type == "gallery" => {        ...,        "gallery": gallery[] {          ...,          "image": {            ...,            "fullAsset": asset->,            "imageUrl": asset->.url,            "blurDataUrl": asset->.metadata.lqip,          }        }      },      gallery[] {          ...,          "image": {            ...,            "fullAsset": asset->,          }        },      tabs[] {        ...,        image {          ...,          "fullAsset": asset->        }      },      iniciatives[] {        ...,        image {          ...,          "fullAsset": asset->        }      },      portafolio {        ...,        gallery[] {          ...,            image {            ...,            "fullAsset": asset->          }        }      },      tools[] {        ...,          apps[] {                ...,                icon {                  ...,                  "fullAsset": asset->                                  }          }              },      testimonials[] {        ...,        logo {          ...,          "fullAsset": asset->        }      },            footer {        ...,        logo {          ...,          "fullAsset": asset->        }      },      _type == "paragraph" => {      ...,      children[]{        ...,        _type == 'image' => {          ...,          asset->        }      }    },    _type == "tabs" => {      ...,      children[]{        ...,        _type == 'image' => {          ...,          asset->        }      }    },    _type == "textAndImage" => {      ...,      "image": {            ...,            "imageUrl": asset->.url,            "blurDataUrl": asset->.metadata.lqip,          }    },    _type == "form" => {      ...,    },    _type == "metrics" => {      ...,    },    _type == "accordion" => {      ...,    }    }            ,  }
 export type GetPageQueryResult = {
   _id: string;
   name: string | null;
@@ -832,6 +1581,13 @@ export type GetPageQueryResult = {
       _type: "item";
       _key: string;
     }>;
+    gallery: null;
+    tabs: null;
+    iniciatives: null;
+    portafolio: null;
+    tools: null;
+    testimonials: null;
+    footer: null;
   } | {
     _key: string;
     _type: "callToAction";
@@ -847,6 +1603,13 @@ export type GetPageQueryResult = {
       openInNewTab?: boolean;
       post: null;
     } | null;
+    gallery: null;
+    tabs: null;
+    iniciatives: null;
+    portafolio: null;
+    tools: null;
+    testimonials: null;
+    footer: null;
   } | {
     _key: string;
     _type: "form";
@@ -860,6 +1623,13 @@ export type GetPageQueryResult = {
       _type: "formItems";
       _key: string;
     }>;
+    gallery: null;
+    tabs: null;
+    iniciatives: null;
+    portafolio: null;
+    tools: null;
+    testimonials: null;
+    footer: null;
   } | {
     _key: string;
     _type: "gallery";
@@ -888,10 +1658,36 @@ export type GetPageQueryResult = {
         alt?: string;
         _type: "galleryImage";
         _key: string;
-        imageUrl: string | null;
-        blurDataUrl: string | null;
+        fullAsset: {
+          _id: string;
+          _type: "sanity.imageAsset";
+          _createdAt: string;
+          _updatedAt: string;
+          _rev: string;
+          originalFilename?: string;
+          label?: string;
+          title?: string;
+          description?: string;
+          altText?: string;
+          sha1hash?: string;
+          extension?: string;
+          mimeType?: string;
+          size?: number;
+          assetId?: string;
+          uploadId?: string;
+          path?: string;
+          url?: string;
+          metadata?: SanityImageMetadata;
+          source?: SanityAssetSourceData;
+        } | null;
       };
     }> | null;
+    tabs: null;
+    iniciatives: null;
+    portafolio: null;
+    tools: null;
+    testimonials: null;
+    footer: null;
   } | {
     _key: string;
     _type: "hero";
@@ -910,6 +1706,13 @@ export type GetPageQueryResult = {
         post: null;
       } | null;
     } | null;
+    gallery: null;
+    tabs: null;
+    iniciatives: null;
+    portafolio: null;
+    tools: null;
+    testimonials: null;
+    footer: null;
   } | {
     _key: string;
     _type: "infoSection";
@@ -947,6 +1750,13 @@ export type GetPageQueryResult = {
       _type: "block";
       _key: string;
     }>;
+    gallery: null;
+    tabs: null;
+    iniciatives: null;
+    portafolio: null;
+    tools: null;
+    testimonials: null;
+    footer: null;
   } | {
     _key: string;
     _type: "metrics";
@@ -961,6 +1771,13 @@ export type GetPageQueryResult = {
       _type: "metricItem";
       _key: string;
     }>;
+    gallery: null;
+    tabs: null;
+    iniciatives: null;
+    portafolio: null;
+    tools: null;
+    testimonials: null;
+    footer: null;
   } | {
     _key: string;
     _type: "paragraph";
@@ -983,16 +1800,24 @@ export type GetPageQueryResult = {
       _type: "block";
       _key: string;
     }>;
+    gallery: null;
+    tabs: null;
+    iniciatives: null;
+    portafolio: null;
+    tools: null;
+    testimonials: null;
+    footer: null;
+    children: null;
   } | {
     _key: string;
     _type: "tabs";
     title?: string;
     heading?: string;
     caption?: string;
-    tabs: Array<{
+    tabs?: Array<{
       heading?: string;
       description?: string;
-      image: {
+      image?: {
         asset?: {
           _ref: string;
           _type: "reference";
@@ -1003,20 +1828,22 @@ export type GetPageQueryResult = {
         crop?: SanityImageCrop;
         alt?: string;
         _type: "image";
-        imageUrl: string | null;
-        blurDataUrl: string | null;
-      } | null;
+      };
       _type: "tab";
       _key: string;
-    }> | null;
+    }>;
+    gallery: null;
+    iniciatives: null;
+    portafolio: null;
+    tools: null;
+    testimonials: null;
+    footer: null;
+    children: null;
   } | {
     _key: string;
-    _type: "textAndImage";
+    _type: "testBlock";
     title?: string;
-    heading?: string;
-    caption?: string;
-    text?: string;
-    image?: {
+    logo?: {
       asset?: {
         _ref: string;
         _type: "reference";
@@ -1028,10 +1855,410 @@ export type GetPageQueryResult = {
       alt?: string;
       _type: "image";
     };
+    gallery: Array<{
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+      _key: string;
+      image: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+        _key: string;
+        fullAsset: {
+          _id: string;
+          _type: "sanity.imageAsset";
+          _createdAt: string;
+          _updatedAt: string;
+          _rev: string;
+          originalFilename?: string;
+          label?: string;
+          title?: string;
+          description?: string;
+          altText?: string;
+          sha1hash?: string;
+          extension?: string;
+          mimeType?: string;
+          size?: number;
+          assetId?: string;
+          uploadId?: string;
+          path?: string;
+          url?: string;
+          metadata?: SanityImageMetadata;
+          source?: SanityAssetSourceData;
+        } | null;
+      };
+    }> | null;
+    blockContent?: Array<{
+      children?: Array<{
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        _type: "image";
+        _key: string;
+      } | {
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+    }>;
+    tabs: Array<{
+      industry?: string;
+      percentage?: string;
+      image: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+        fullAsset: {
+          _id: string;
+          _type: "sanity.imageAsset";
+          _createdAt: string;
+          _updatedAt: string;
+          _rev: string;
+          originalFilename?: string;
+          label?: string;
+          title?: string;
+          description?: string;
+          altText?: string;
+          sha1hash?: string;
+          extension?: string;
+          mimeType?: string;
+          size?: number;
+          assetId?: string;
+          uploadId?: string;
+          path?: string;
+          url?: string;
+          metadata?: SanityImageMetadata;
+          source?: SanityAssetSourceData;
+        } | null;
+      } | null;
+      _type: "tab";
+      _key: string;
+    }> | null;
+    metrics?: Array<{
+      bigNumber?: string;
+      title?: string;
+      description?: string;
+      _type: "metric";
+      _key: string;
+    }>;
+    iniciatives: Array<{
+      title?: string;
+      description?: string;
+      color?: "black" | "blue" | "green" | "red";
+      gallery?: Array<{
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+        _key: string;
+      }>;
+      image: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+        fullAsset: {
+          _id: string;
+          _type: "sanity.imageAsset";
+          _createdAt: string;
+          _updatedAt: string;
+          _rev: string;
+          originalFilename?: string;
+          label?: string;
+          title?: string;
+          description?: string;
+          altText?: string;
+          sha1hash?: string;
+          extension?: string;
+          mimeType?: string;
+          size?: number;
+          assetId?: string;
+          uploadId?: string;
+          path?: string;
+          url?: string;
+          metadata?: SanityImageMetadata;
+          source?: SanityAssetSourceData;
+        } | null;
+      } | null;
+      _type: "item";
+      _key: string;
+    }> | null;
+    tools: Array<{
+      title?: string;
+      description?: string;
+      apps: Array<{
+        name?: string;
+        category?: string;
+        icon: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+          fullAsset: {
+            _id: string;
+            _type: "sanity.imageAsset";
+            _createdAt: string;
+            _updatedAt: string;
+            _rev: string;
+            originalFilename?: string;
+            label?: string;
+            title?: string;
+            description?: string;
+            altText?: string;
+            sha1hash?: string;
+            extension?: string;
+            mimeType?: string;
+            size?: number;
+            assetId?: string;
+            uploadId?: string;
+            path?: string;
+            url?: string;
+            metadata?: SanityImageMetadata;
+            source?: SanityAssetSourceData;
+          } | null;
+        } | null;
+        _type: "app";
+        _key: string;
+      }> | null;
+      _type: "toolGroup";
+      _key: string;
+    }> | null;
+    names?: Array<string>;
+    testimonials: Array<{
+      person?: string;
+      company?: string;
+      text?: string;
+      logo: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+        fullAsset: {
+          _id: string;
+          _type: "sanity.imageAsset";
+          _createdAt: string;
+          _updatedAt: string;
+          _rev: string;
+          originalFilename?: string;
+          label?: string;
+          title?: string;
+          description?: string;
+          altText?: string;
+          sha1hash?: string;
+          extension?: string;
+          mimeType?: string;
+          size?: number;
+          assetId?: string;
+          uploadId?: string;
+          path?: string;
+          url?: string;
+          metadata?: SanityImageMetadata;
+          source?: SanityAssetSourceData;
+        } | null;
+      } | null;
+      color?: Color;
+      _type: "testimonial";
+      _key: string;
+    }> | null;
+    portafolio: {
+      gallery: Array<{
+        _key: string;
+        _type: "projects";
+        client?: string;
+        industry?: string;
+        image: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+          fullAsset: {
+            _id: string;
+            _type: "sanity.imageAsset";
+            _createdAt: string;
+            _updatedAt: string;
+            _rev: string;
+            originalFilename?: string;
+            label?: string;
+            title?: string;
+            description?: string;
+            altText?: string;
+            sha1hash?: string;
+            extension?: string;
+            mimeType?: string;
+            size?: number;
+            assetId?: string;
+            uploadId?: string;
+            path?: string;
+            url?: string;
+            metadata?: SanityImageMetadata;
+            source?: SanityAssetSourceData;
+          } | null;
+        } | null;
+      }> | null;
+    } | null;
+    footer: {
+      logo: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+        fullAsset: {
+          _id: string;
+          _type: "sanity.imageAsset";
+          _createdAt: string;
+          _updatedAt: string;
+          _rev: string;
+          originalFilename?: string;
+          label?: string;
+          title?: string;
+          description?: string;
+          altText?: string;
+          sha1hash?: string;
+          extension?: string;
+          mimeType?: string;
+          size?: number;
+          assetId?: string;
+          uploadId?: string;
+          path?: string;
+          url?: string;
+          metadata?: SanityImageMetadata;
+          source?: SanityAssetSourceData;
+        } | null;
+      } | null;
+      text?: string;
+      contact?: string;
+      contactLinks?: {
+        email?: string;
+        website?: {
+          url?: string;
+          title?: string;
+        };
+        socials?: Array<{
+          company?: string;
+          url?: string;
+          _type: "account";
+          _key: string;
+        }>;
+      };
+    } | null;
+  } | {
+    _key: string;
+    _type: "textAndImage";
+    title?: string;
+    heading?: string;
+    caption?: string;
+    text?: string;
+    image: {
+      _key: string;
+      _type: "textAndImage";
+      title?: string;
+      heading?: string;
+      caption?: string;
+      text?: string;
+      image?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      button?: {
+        buttonText?: string;
+        link?: Link;
+      };
+      imageUrl: null;
+      blurDataUrl: null;
+    };
     button?: {
       buttonText?: string;
       link?: Link;
     };
+    gallery: null;
+    tabs: null;
+    iniciatives: null;
+    portafolio: null;
+    tools: null;
+    testimonials: null;
+    footer: null;
   }> | null;
 } | null;
 // Variable: allPostsQuery
@@ -1196,20 +2423,25 @@ export type PagesSlugsResult = Array<{
 export type HOME_PAGES_SLUGSResult = Array<{
   slug: string | null;
 }>;
+// Variable: HOMEPAGE_QUERY
+// Query: *[isHomepage == true]{'slug':slug.current, _id}[0]
+export type HOMEPAGE_QUERYResult = null;
 
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
     "*[_type == \"settings\"][0]": SettingsQueryResult;
+    "\n*[_type == \"header\"] {\n  navigation[] {\n    ...,\n    text,\n    _key,\n    'slug': link.page->slug.current,\n    'pagePortionKey':link.linkToSection,\n    'typeOfLink': link.linkType,\n  },\n     \"websiteTitle\": *[_type == \"settings\"][0].title,\n\n}[0]\n": HEADER_NAVIGATION_QUERYResult;
     "\n  *[_type == \"header\"][0] {\n  ...,\n  navigation[] {\n    ...,\n    \"link\": link {\n      ...,\n      \"page\": page->.slug.current,\n    }\n  }\n}\n  ": GET_NAV_LINKSResult;
-    "\n  *[_type == 'page' && isHome.status == true][0]{\n    _id,\n    name,\n    slug,\n    heading,\n    subheading,\n    \n    \"pageBuilder\": pageBuilder[]{\n      ...,\n      _type == \"callToAction\" => {\n        ...,\n        \n    link {\n      ...,\n      _type == \"link\" => {\n        \"page\": page->slug.current,\n        \"post\": post->slug.current\n      }\n    }\n,\n      },\n      _type == \"hero\" => {\n        ...,\n        \n    button {\n      ...,\n      buttonText,\n      link {\n        ...,\n        _type == \"link\" => {\n          \"page\": page->slug.current,\n          \"post\": post->slug.current\n        }\n      }\n    }\n,\n      },\n      _type == \"tabs\" => {\n        ...,\n        \"tabs\": tabs[] {\n          ...,\n          \"image\": image {\n            ...,\n            \"imageUrl\": asset->.url,\n            \"blurDataUrl\": asset->.metadata.lqip,\n          }\n        }\n      },\n      _type == \"gallery\" => {\n        ...,\n        \"gallery\": gallery[] {\n          ...,\n          \"image\": {\n            ...,\n            \"imageUrl\": asset->.url,\n            \"blurDataUrl\": asset->.metadata.lqip,\n          }\n        }\n      }\n    },\n    _type == \"paragraph\" => {\n      ...,\n    },\n    _type == \"textAndImage\" => {\n      ...,\n      \"image\": {\n            ...,\n            \"imageUrl\": asset->.url,\n            \"blurDataUrl\": asset->.metadata.lqip,\n          }\n    },\n    _type == \"form\" => {\n      ...,\n    },\n    _type == \"metrics\" => {\n      ...,\n    },\n    _type == \"accordion\" => {\n      ...,\n    }\n,\n  }\n": HOME_GET_PAGEQUERYResult;
-    "\n  *[_type == 'page' && slug.current == $slug][0]{\n    _id,\n    name,\n    slug,\n    heading,\n    subheading,\n    \n    \"pageBuilder\": pageBuilder[]{\n      ...,\n      _type == \"callToAction\" => {\n        ...,\n        \n    link {\n      ...,\n      _type == \"link\" => {\n        \"page\": page->slug.current,\n        \"post\": post->slug.current\n      }\n    }\n,\n      },\n      _type == \"hero\" => {\n        ...,\n        \n    button {\n      ...,\n      buttonText,\n      link {\n        ...,\n        _type == \"link\" => {\n          \"page\": page->slug.current,\n          \"post\": post->slug.current\n        }\n      }\n    }\n,\n      },\n      _type == \"tabs\" => {\n        ...,\n        \"tabs\": tabs[] {\n          ...,\n          \"image\": image {\n            ...,\n            \"imageUrl\": asset->.url,\n            \"blurDataUrl\": asset->.metadata.lqip,\n          }\n        }\n      },\n      _type == \"gallery\" => {\n        ...,\n        \"gallery\": gallery[] {\n          ...,\n          \"image\": {\n            ...,\n            \"imageUrl\": asset->.url,\n            \"blurDataUrl\": asset->.metadata.lqip,\n          }\n        }\n      }\n    },\n    _type == \"paragraph\" => {\n      ...,\n    },\n    _type == \"textAndImage\" => {\n      ...,\n      \"image\": {\n            ...,\n            \"imageUrl\": asset->.url,\n            \"blurDataUrl\": asset->.metadata.lqip,\n          }\n    },\n    _type == \"form\" => {\n      ...,\n    },\n    _type == \"metrics\" => {\n      ...,\n    },\n    _type == \"accordion\" => {\n      ...,\n    }\n,\n  }\n": GetPageQueryResult;
+    "\n  *[_type == 'page' && isHome.status == true][0]{\n    _id,\n    name,\n    slug,\n    heading,\n    subheading,\n    \n    \"pageBuilder\": pageBuilder[]{\n      ...,\n      _type == \"callToAction\" => {\n        ...,\n        \n    link {\n      ...,\n      _type == \"link\" => {\n        \"page\": page->slug.current,\n        \"post\": post->slug.current\n      }\n    }\n,\n      },\n      _type == \"hero\" => {\n        ...,\n        \n    button {\n      ...,\n      buttonText,\n      link {\n        ...,\n        _type == \"link\" => {\n          \"page\": page->slug.current,\n          \"post\": post->slug.current\n        }\n      }\n    }\n,\n      },\n      _type == \"tabs\" => {\n        ...,\n        \"tabs\": tabs[] {\n          ...,\n          \"image\": image {\n            ...,\n            \"imageUrl\": asset->.url,\n            \"blurDataUrl\": asset->.metadata.lqip,\n          }\n        }\n      },\n      _type == \"gallery\" => {\n        ...,\n        \"gallery\": gallery[] {\n          ...,\n          \"image\": {\n            ...,\n            \"fullAsset\": asset->,\n            \"imageUrl\": asset->.url,\n            \"blurDataUrl\": asset->.metadata.lqip,\n          }\n        }\n      },\n      gallery[] {\n          ...,\n          \"image\": {\n            ...,\n            \"fullAsset\": asset->,\n          }\n        },\n\n      tabs[] {\n        ...,\n        image {\n          ...,\n          \"fullAsset\": asset->\n        }\n      },\n      iniciatives[] {\n        ...,\n        image {\n          ...,\n          \"fullAsset\": asset->\n        }\n      },\n      portafolio {\n        ...,\n        gallery[] {\n          ...,\n            image {\n            ...,\n            \"fullAsset\": asset->\n          }\n        }\n      },\n      tools[] {\n        ...,\n          apps[] {\n                ...,\n                icon {\n                  ...,\n                  \"fullAsset\": asset->      \n            \n                }\n          }\n        \n      },\n      testimonials[] {\n        ...,\n        logo {\n          ...,\n          \"fullAsset\": asset->\n        }\n      },\n            footer {\n        ...,\n        logo {\n          ...,\n          \"fullAsset\": asset->\n        }\n      },\n      _type == \"paragraph\" => {\n      ...,\n      children[]{\n        ...,\n        _type == 'image' => {\n          ...,\n          asset->\n        }\n      }\n    },\n    _type == \"tabs\" => {\n      ...,\n      children[]{\n        ...,\n        _type == 'image' => {\n          ...,\n          asset->\n        }\n      }\n    },\n    _type == \"textAndImage\" => {\n      ...,\n      \"image\": {\n            ...,\n            \"imageUrl\": asset->.url,\n            \"blurDataUrl\": asset->.metadata.lqip,\n          }\n    },\n    _type == \"form\" => {\n      ...,\n    },\n    _type == \"metrics\" => {\n      ...,\n    },\n    _type == \"accordion\" => {\n      ...,\n    }\n\n    }\n    \n    \n    \n,\n  }\n": HOME_GET_PAGEQUERYResult;
+    "\n  *[_type == 'page' && slug.current == $slug][0]{\n    _id,\n    name,\n    slug,\n    heading,\n    subheading,\n    \n    \"pageBuilder\": pageBuilder[]{\n      ...,\n      _type == \"callToAction\" => {\n        ...,\n        \n    link {\n      ...,\n      _type == \"link\" => {\n        \"page\": page->slug.current,\n        \"post\": post->slug.current\n      }\n    }\n,\n      },\n      _type == \"hero\" => {\n        ...,\n        \n    button {\n      ...,\n      buttonText,\n      link {\n        ...,\n        _type == \"link\" => {\n          \"page\": page->slug.current,\n          \"post\": post->slug.current\n        }\n      }\n    }\n,\n      },\n      _type == \"tabs\" => {\n        ...,\n        \"tabs\": tabs[] {\n          ...,\n          \"image\": image {\n            ...,\n            \"imageUrl\": asset->.url,\n            \"blurDataUrl\": asset->.metadata.lqip,\n          }\n        }\n      },\n      _type == \"gallery\" => {\n        ...,\n        \"gallery\": gallery[] {\n          ...,\n          \"image\": {\n            ...,\n            \"fullAsset\": asset->,\n            \"imageUrl\": asset->.url,\n            \"blurDataUrl\": asset->.metadata.lqip,\n          }\n        }\n      },\n      gallery[] {\n          ...,\n          \"image\": {\n            ...,\n            \"fullAsset\": asset->,\n          }\n        },\n\n      tabs[] {\n        ...,\n        image {\n          ...,\n          \"fullAsset\": asset->\n        }\n      },\n      iniciatives[] {\n        ...,\n        image {\n          ...,\n          \"fullAsset\": asset->\n        }\n      },\n      portafolio {\n        ...,\n        gallery[] {\n          ...,\n            image {\n            ...,\n            \"fullAsset\": asset->\n          }\n        }\n      },\n      tools[] {\n        ...,\n          apps[] {\n                ...,\n                icon {\n                  ...,\n                  \"fullAsset\": asset->      \n            \n                }\n          }\n        \n      },\n      testimonials[] {\n        ...,\n        logo {\n          ...,\n          \"fullAsset\": asset->\n        }\n      },\n            footer {\n        ...,\n        logo {\n          ...,\n          \"fullAsset\": asset->\n        }\n      },\n      _type == \"paragraph\" => {\n      ...,\n      children[]{\n        ...,\n        _type == 'image' => {\n          ...,\n          asset->\n        }\n      }\n    },\n    _type == \"tabs\" => {\n      ...,\n      children[]{\n        ...,\n        _type == 'image' => {\n          ...,\n          asset->\n        }\n      }\n    },\n    _type == \"textAndImage\" => {\n      ...,\n      \"image\": {\n            ...,\n            \"imageUrl\": asset->.url,\n            \"blurDataUrl\": asset->.metadata.lqip,\n          }\n    },\n    _type == \"form\" => {\n      ...,\n    },\n    _type == \"metrics\" => {\n      ...,\n    },\n    _type == \"accordion\" => {\n      ...,\n    }\n\n    }\n    \n    \n    \n,\n  }\n": GetPageQueryResult;
     "\n  *[_type == \"post\" && defined(slug.current)] | order(date desc, _updatedAt desc) {\n    \n  _id,\n  \"status\": select(_originalId in path(\"drafts.**\") => \"draft\", \"published\"),\n  \"title\": coalesce(title, \"Untitled\"),\n  \"slug\": slug.current,\n  excerpt,\n  coverImage,\n  \"date\": coalesce(date, _updatedAt),\n  \"author\": author->{firstName, lastName, picture},\n\n  }\n": AllPostsQueryResult;
     "\n  *[_type == \"post\" && _id != $skip && defined(slug.current)] | order(date desc, _updatedAt desc) [0...$limit] {\n    \n  _id,\n  \"status\": select(_originalId in path(\"drafts.**\") => \"draft\", \"published\"),\n  \"title\": coalesce(title, \"Untitled\"),\n  \"slug\": slug.current,\n  excerpt,\n  coverImage,\n  \"date\": coalesce(date, _updatedAt),\n  \"author\": author->{firstName, lastName, picture},\n\n  }\n": MorePostsQueryResult;
     "\n  *[_type == \"post\" && slug.current == $slug] [0] {\n    content[]{\n    ...,\n    markDefs[]{\n      ...,\n      \n    link {\n      ...,\n      _type == \"link\" => {\n        \"page\": page->slug.current,\n        \"post\": post->slug.current\n      }\n    }\n\n    }\n  },\n    \n  _id,\n  \"status\": select(_originalId in path(\"drafts.**\") => \"draft\", \"published\"),\n  \"title\": coalesce(title, \"Untitled\"),\n  \"slug\": slug.current,\n  excerpt,\n  coverImage,\n  \"date\": coalesce(date, _updatedAt),\n  \"author\": author->{firstName, lastName, picture},\n\n  }\n": PostQueryResult;
     "\n  *[_type == \"post\" && defined(slug.current)]\n  {\"slug\": slug.current}\n": PostPagesSlugsResult;
     "\n  *[_type == \"page\" && defined(slug.current)]\n  {\"slug\": slug.current}\n": PagesSlugsResult;
     "\n  *[_type == \"page\" && isHome.status==true && defined(slug.current)]\n  {\"slug\": slug.current}\n": HOME_PAGES_SLUGSResult;
+    "\n  *[isHomepage == true]{'slug':slug.current, _id}[0]\n": HOMEPAGE_QUERYResult;
   }
 }

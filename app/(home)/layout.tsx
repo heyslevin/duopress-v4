@@ -11,8 +11,7 @@ import { Toaster } from "sonner";
 // import { Analytics } from "@vercel/analytics/react";
 
 import DraftModeToast from "@/components/DraftModeToast";
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
+import Header from "@/components/layout/Header";
 import { LiveErrorBoundary } from "@/components/LiveErrorBoundary";
 import * as demo from "@/sanity/lib/demo";
 import { sanityFetch, SanityLive } from "@/sanity/lib/live";
@@ -83,6 +82,7 @@ export default async function RootLayout({
           <LiveErrorBoundary>
             <SanityLive />
           </LiveErrorBoundary>
+          <Header />
           {children}
         </section>
         <SpeedInsights />
